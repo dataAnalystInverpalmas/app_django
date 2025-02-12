@@ -1,0 +1,27 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<h2>Person Form</h2>
+
+<form method="post" id="personForm" data-cities-url="{% url 'ajax_load_cities' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Submit">
+</form>
+
+{% load static %}
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+<script>
+    $(document).on("change", "#id_country", function () {
+        const url = $("#personForm").data("cities-url");
+        const countryId = $(this).val();
+     
+        $.get(url, { country_id: countryId }, function (data) {
+            $("#id_city").html(data);
+        });
+    }); 
+</script>
+
+{% endblock %}

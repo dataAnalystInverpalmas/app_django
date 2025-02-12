@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block content %}
+  <h1>Create Record</h1>
+  <form method="post" action="{% url 'app:record-create' %}" id="recordForm" data-ajax-load-sub-groups="{% url 'app:ajax_load_sub_groups' %}">
+    <!-- Campos del formulario -->
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+  </form>
+
+  {% load static %}
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+
+{% endblock %}
+

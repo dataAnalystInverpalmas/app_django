@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h1>Record</h1>
+    <h3>{{ record }}</h3>
+    <!-- Mostrar otros campos del registro -->
+    <p>Date: {{ record.date }}</p>
+    <p>Farm: {{ record.farm }}</p>
+    <p>Flower: {{ record.flower }}</p>
+    <p>Area: {{ record.area }}</p>
+    <!-- Agrega otros campos del registro aquí -->
+
+    <a href="{% url 'app:record-update' record.pk %}">Editar</a>
+    <a href="{% url 'app:record-delete' record.pk %}">Eliminar</a>
+{% endblock content %}
+

@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <h1>Record List</h1>
+  {% if records %}
+    <table>
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Granja</th>
+          <th>Flor</th>
+          <th>Área</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for record in records %}
+          <tr>
+            <td>{{ record.date }}</td>
+            <td>{{ record.farm }}</td>
+            <td>{{ record.flower }}</td>
+            <td>{{ record.area }}</td>
+            <td>
+              <a href="{% url 'app:record-detail' record.pk %}">Ver detalles</a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No hay registros.</p>
+  {% endif %}
+{% endblock content %}
+

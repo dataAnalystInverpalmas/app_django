@@ -1,0 +1,4 @@
+<option value="">---------</option>
+{% for sub_group in sub_groups %}
+<option value="{{ sub_group.pk }}">{{ sub_group.name }}</option>
+{% endfor %}
